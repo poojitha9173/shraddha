@@ -8,12 +8,18 @@ const BG_COLOR = "#000000";
 
 const NAV_LINKS = [
   { name: "Home", href: "/" },
-  { name: "About Us", href: "/about" },
-  { name: "Our Services", href: "/services" },
+  { name: "About Us", href: "/aboutt" },
+];
+
+const SERVICES = [
+  { name: "Web Development", href: "/web" },
+  { name: "App Development", href: "/appDevelop" },
+  { name: "Digital Marketing", href: "/digital" },
 ];
 
 export default function ExactNavbarAligned() {
   const [open, setOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
 
   return (
     <>
@@ -35,31 +41,57 @@ export default function ExactNavbarAligned() {
             </Link>
           </div>
 
-          {/* DESKTOP MENU (right aligned) */}
+          {/* DESKTOP MENU */}
           <div className="ml-auto hidden items-center space-x-12 md:flex">
             <ul className="flex items-center space-x-10">
               {NAV_LINKS.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-white text-base font-normal transition-colors duration-200 hover:text-[#D94500]"
+                    className="text-white text-base font-normal hover:text-[#D94500] transition"
                   >
                     {link.name}
                   </Link>
                 </li>
               ))}
+
+              {/* Our Services Dropdown */}
+              <li
+                className="relative"
+                onMouseEnter={() => setServicesOpen(true)}
+                onMouseLeave={() => setServicesOpen(false)}
+              >
+                <button className="text-white text-base font-normal hover:text-[#D94500] transition">
+                  Our Services
+                </button>
+
+                {servicesOpen && (
+                  <div className="absolute top-full mt-2 w-56 rounded bg-black shadow-lg overflow-hidden">
+                    {SERVICES.map((service) => (
+                      <Link
+                        key={service.name}
+                        href={service.href}
+                        className="block px-4 py-2 text-white hover:bg-[#D94500] transition"
+                      >
+                        {service.name}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </li>
             </ul>
 
+            {/* Contact Button */}
             <Link
               href="/contact"
-              className="rounded px-6 py-2 text-base font-normal text-white transition hover:opacity-90"
+              className="rounded px-6 py-2 text-base font-normal text-white hover:opacity-90"
               style={{ backgroundColor: BRAND_COLOR }}
             >
               Contact Now
             </Link>
           </div>
 
-          {/* MOBILE MENU BUTTON (right side) */}
+          {/* MOBILE MENU BUTTON */}
           <button
             className="ml-auto flex flex-col gap-1 md:hidden"
             onClick={() => setOpen(true)}
@@ -101,19 +133,33 @@ export default function ExactNavbarAligned() {
         </div>
 
         {/* Sidebar Links */}
-        <ul className="space-y-6">
+        <ul className="space-y-6 text-white text-lg">
           {NAV_LINKS.map((link) => (
             <li key={link.name}>
-              <Link
-                href={link.href}
-                onClick={() => setOpen(false)}
-                className="block text-lg text-white hover:text-[#D94500]"
-              >
+              <Link href={link.href} onClick={() => setOpen(false)}>
                 {link.name}
               </Link>
             </li>
           ))}
 
+          {/* Mobile Services */}
+          <li className="pt-4 border-t border-white/20">
+            <p className="mb-3 font-semibold">Our Services</p>
+            <div className="space-y-3 pl-2">
+              {SERVICES.map((service) => (
+                <Link
+                  key={service.name}
+                  href={service.href}
+                  onClick={() => setOpen(false)}
+                  className="block text-white hover:text-[#D94500]"
+                >
+                  {service.name}
+                </Link>
+              ))}
+            </div>
+          </li>
+
+          {/* Contact Button */}
           <Link
             href="/contact"
             onClick={() => setOpen(false)}

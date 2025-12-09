@@ -20,7 +20,7 @@ export default function AboutPage() {
             className="overflow-hidden rounded-xl shadow-lg"
           >
             <Image
-              src="/images/meeting1.png"  // replace with your PNG
+              src="/aboutus-section1-img.png"  // replace with your PNG
               alt="Team Discussion"
               width={500}
               height={500}
@@ -28,18 +28,7 @@ export default function AboutPage() {
             />
           </motion.div>
 
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="absolute bottom-[-60px] right-0 w-60 overflow-hidden rounded-xl shadow-lg border-4 border-white bg-white"
-          >
-            <Image
-              src="/images/meeting2.png"  // replace with your PNG
-              alt="Team Working"
-              width={500}
-              height={500}
-              className="object-cover"
-            />
-          </motion.div>
+          
 
           {/* Orange Blob */}
           <div className="absolute -z-10 left-[-40px] top-[60px] w-64 h-64 bg-orange-500 rounded-[60%]" />
@@ -193,34 +182,7 @@ export default function AboutPage() {
         ))}
       </section>
 
-      {/* ================= RESULTS ================= */}
-      <section className="bg-gray-50 py-24">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="text-4xl font-bold mb-12">
-            Results That Drive Growth
-          </h2>
-
-          <div className="grid md:grid-cols-4 gap-8">
-            {[
-              { num: "150%", label: "Average Traffic Increase" },
-              { num: "200+", label: "Successful Campaigns" },
-              { num: "85%", label: "Client Retention Rate" },
-              { num: "3x", label: "Average ROI" },
-            ].map((stat, i) => (
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                key={i}
-                className="bg-white p-8 rounded-xl shadow"
-              >
-                <h3 className="text-4xl font-bold text-orange-500">
-                  {stat.num}
-                </h3>
-                <p className="text-gray-600 mt-2">{stat.label}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+    
     </div>
   );
 }

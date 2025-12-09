@@ -1,6 +1,8 @@
 "use client";
 import ContactPage from '@/components/contact'
+import HeroSection from '@/components/HeroSection';
 import DevelopmentProcessSection from '@/components/webprocess'
+import WebServiceStack from '@/components/WebServiceStack';
 import BusinessServicesSection from '@/components/whiteService'
 
 
@@ -13,7 +15,18 @@ const Web = () => {
     
   return (
     <div>
+     <HeroSection
+  tag = "WEB DEVELOPMENT SERVICES"
+  title = "Custom Web Solutions for Growing Businesses"
+  description = "We create custom, responsive, and user-friendly websites designed to showcase your brand and drive conversions. From simple landing pages to complex e-commerce platforms, we build web solutions that deliver results."
+  primaryBtnText = "Get a Free Quote"
+  primaryBtnLink = "#"
+  secondaryBtnText = "View Our Work"
+  secondaryBtnLink = "#"
+  imageSrc = "/image_3bfa31.png"
+/>
         <BusinessServicesSection/>
+        <WebServiceStack/>
         <DevelopmentProcessSection/>
 
           {/* ================= TESTIMONIALS ================= */}
