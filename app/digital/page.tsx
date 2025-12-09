@@ -1,9 +1,58 @@
-import React from 'react'
+"use client";
+
+import ContactPage from "@/components/contact";
+import DigitalMarketingProcessSection from "@/components/digitalProcess";
+import DigitalMarketingServicesSection from "@/components/digitalService";
+import HeroSection from "@/components/HeroSection";
+import { motion } from "framer-motion";
 
 const Digital = () => {
   return (
-    <div>Digital</div>
-  )
-}
+    <div>
+      <HeroSection
+        tag="DIGITAL MARKETING SERVICES"
+        title="Grow Your Online Presence"
+        description="Strategic digital marketing solutions designed to increase your brand visibility, drive qualified traffic, and boost conversions for measurable business growth."
+        primaryBtnText="Get a Free Consultation"
+        primaryBtnLink="#"
+        imageSrc="/image_3bf70e.png"
+      />
 
-export default Digital
+      <DigitalMarketingServicesSection />
+
+      {/* ================= RESULTS ================= */}
+      <section className="bg-gray-50 py-24">
+        <div className="container mx-auto px-6 text-center">
+          <h2 className="text-4xl font-bold mb-12">
+            Results That Drive Growth
+          </h2>
+
+          <div className="grid md:grid-cols-4 gap-8">
+            {[
+              { num: "150%", label: "Average Traffic Increase" },
+              { num: "200+", label: "Successful Campaigns" },
+              { num: "85%", label: "Client Retention Rate" },
+              { num: "3x", label: "Average ROI" },
+            ].map((stat, i) => (
+              <motion.div
+                key={i}
+                whileHover={{ scale: 1.05 }}
+                className="bg-white p-8 rounded-xl shadow"
+              >
+                <h3 className="text-4xl font-bold text-orange-500">
+                  {stat.num}
+                </h3>
+                <p className="text-gray-600 mt-2">{stat.label}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <DigitalMarketingProcessSection />
+      <ContactPage />
+    </div>
+  );
+};
+
+export default Digital;
